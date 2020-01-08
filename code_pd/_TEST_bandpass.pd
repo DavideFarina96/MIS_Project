@@ -1,0 +1,74 @@
+#N canvas 449 122 824 677 10;
+#X obj 658 291 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -261234
+-1 -1 3810 1;
+#X obj 658 436 / 100;
+#X floatatom 658 465 5 0 0 0 - - -;
+#X obj 658 517 line~;
+#X obj 658 492 pack 0 50;
+#X obj 381 553 *~;
+#X obj 415 262 hsl 200 15 80 8000 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 15231 1;
+#X floatatom 412 282 5 0 0 0 - - -;
+#X obj 381 393 bp~, f 11;
+#X text 449 283 <-- center frequency;
+#X text 482 367 <-- Q;
+#X floatatom 444 365 5 0 0 0 - - -;
+#X obj 444 323 loadbang;
+#X msg 444 345 1.5;
+#X obj 412 199 loadbang;
+#X msg 412 222 2000;
+#X text 688 288 volume;
+#X floatatom 490 185 5 0 0 0 - - -;
+#X obj 652 99 hsl 128 15 0.1 10 1 0 empty empty empty -2 -8 0 10 -228856
+-1 -1 0 1;
+#X text 647 78 exponential factor;
+#X obj 649 125 nbx 8 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-228856 -1 -1 0 256;
+#X text 326 113 The value from the sensor;
+#X text 355 160 the mapping function;
+#X obj 658 231 loadbang;
+#X msg 658 260 30;
+#X obj 490 158 cyclone/scale 0 1 80 8000 1;
+#X obj 381 586 throw~ ch1;
+#X obj 501 586 throw~ ch2;
+#X obj 382 44 receive~ input_signal;
+#X obj 41 115 switch~;
+#X obj 41 89 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 41 35 inlet;
+#X text 17 135 Enable/disable DSP in this patch;
+#X obj 151 259 noise~;
+#X obj 76 292 cyclone/gate~;
+#X obj 76 258 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 76 229 loadbang;
+#X obj 490 115 r _a2;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 5 1;
+#X connect 4 0 3 0;
+#X connect 5 0 26 0;
+#X connect 5 0 27 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 1;
+#X connect 8 0 5 0;
+#X connect 11 0 8 2;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X connect 14 0 15 0;
+#X connect 15 0 6 0;
+#X connect 17 0 6 0;
+#X connect 18 0 20 0;
+#X connect 20 0 25 5;
+#X connect 23 0 24 0;
+#X connect 24 0 0 0;
+#X connect 25 0 17 0;
+#X connect 28 0 8 0;
+#X connect 30 0 29 0;
+#X connect 31 0 30 0;
+#X connect 33 0 34 1;
+#X connect 34 0 8 0;
+#X connect 35 0 34 0;
+#X connect 36 0 35 0;
+#X connect 37 0 25 0;

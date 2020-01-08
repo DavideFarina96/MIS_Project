@@ -1,0 +1,49 @@
+#N canvas 349 23 944 644 10;
+#X obj 456 270 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 456 200 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 456 231 _TEST_delay;
+#X obj 457 513 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 457 431 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 456 301 _TEST_delay_feedback;
+#X obj 457 347 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 457 378 _TEST_reverse;
+#X obj 457 158 _TEST_direct_signal;
+#X obj 457 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 457 462 _TEST_frequency_shifter;
+#X obj 305 76 loadbang;
+#X msg 305 99 1;
+#X obj 457 544 _TEST_pitch_shifter;
+#X obj 18 92 send~ input_signal;
+#X obj 18 57 _ADSR_generator;
+#X text 477 132 Enable DSP inside the patch;
+#X text 476 199 Enable DSP inside the patch;
+#X text 476 269 Enable DSP inside the patch;
+#X text 476 347 Enable DSP inside the patch;
+#X text 475 431 Enable DSP inside the patch;
+#X text 475 512 Enable DSP inside the patch;
+#X text 456 23 Using loadbanbg enable the DSP for the patches you want
+to use. Then modify the patches to control via the sensors the parameters
+that you want to control;
+#X obj 457 588 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 475 587 Enable DSP inside the patch;
+#X obj 457 619 _TEST_bandpass;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 3 0 13 0;
+#X connect 4 0 10 0;
+#X connect 6 0 7 0;
+#X connect 9 0 8 0;
+#X connect 11 0 12 0;
+#X connect 12 0 9 0;
+#X connect 12 0 0 0;
+#X connect 12 0 3 0;
+#X connect 12 0 6 0;
+#X connect 15 0 14 0;
+#X connect 23 0 25 0;

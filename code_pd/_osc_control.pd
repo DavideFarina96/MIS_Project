@@ -1,0 +1,92 @@
+#N canvas -8 0 1920 1020 10;
+#X obj 7 3 cnv 15 700 700 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj 19 553 mrpeach/packOSC;
+#X text 19 6 Transmitter;
+#X obj 19 672 netsend -u -b;
+#X obj 70 617 loadbang;
+#X obj 19 587 cyclone/prepend send;
+#X floatatom 19 235 5 0 0 0 - - -;
+#X text 252 635 Here set the address of the device receiving the messages
+\, and the port which the device is listening on;
+#X obj 723 3 cnv 15 700 700 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X text 738 8 Receiver;
+#X obj 765 95 mrpeach/unpackOSC;
+#X text 932 64 Here set the port which the device is listening on for
+incoming OSC messages;
+#X obj 19 196 r _a0;
+#X msg 70 638 connect 192.168.0.100 3333;
+#X obj 765 68 netreceive -u -b 2222;
+#X obj 1170 188 print warning_message_not_routed;
+#X obj 1147 359 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1069 344 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1008 285 loadbang;
+#X msg 1014 318 0;
+#X obj 1158 389 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1181 386 cyclone/gate;
+#X obj 1162 424 cyclone/gate;
+#X obj 765 180 s feedback;
+#X obj 1258 418 print feedback;
+#X obj 765 138 mrpeach/routeOSC /feedback /nesw /enable_print, f 100
+;
+#X obj 773 244 s nesw;
+#X obj 1275 447 print nesw;
+#X msg 19 257 /pressure \$1;
+#X obj 1145 593 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1153 624 print ---------;
+#X obj 780 396 symbol2list _;
+#X obj 778 340 list2symbol;
+#X symbolatom 877 375 10 0 0 0 - - -;
+#X obj 950 515 print 4;
+#X obj 782 470 print 1;
+#X obj 816 523 print 2;
+#X obj 927 465 print 3;
+#X obj 755 214 print feed;
+#X obj 780 425 unpack f f f f;
+#X obj 931 486 s motor_up_pattern;
+#X obj 827 546 s motor_left_pattern;
+#X obj 778 495 s motor_down_pattern;
+#X obj 960 539 s motor_right_pattern;
+#X connect 1 0 5 0;
+#X connect 4 0 13 0;
+#X connect 5 0 3 0;
+#X connect 6 0 28 0;
+#X connect 10 0 25 0;
+#X connect 12 0 6 0;
+#X connect 13 0 3 0;
+#X connect 14 0 10 0;
+#X connect 16 0 21 0;
+#X connect 17 0 16 0;
+#X connect 17 0 20 0;
+#X connect 18 0 19 0;
+#X connect 19 0 17 0;
+#X connect 20 0 22 0;
+#X connect 21 0 24 0;
+#X connect 22 0 27 0;
+#X connect 25 0 21 1;
+#X connect 25 0 23 0;
+#X connect 25 0 38 0;
+#X connect 25 1 22 1;
+#X connect 25 1 26 0;
+#X connect 25 1 30 0;
+#X connect 25 1 32 0;
+#X connect 25 2 17 0;
+#X connect 25 3 15 0;
+#X connect 28 0 1 0;
+#X connect 29 0 30 0;
+#X connect 31 0 39 0;
+#X connect 32 0 31 0;
+#X connect 32 0 33 0;
+#X connect 39 0 35 0;
+#X connect 39 0 42 0;
+#X connect 39 1 36 0;
+#X connect 39 1 41 0;
+#X connect 39 2 37 0;
+#X connect 39 2 40 0;
+#X connect 39 3 34 0;
+#X connect 39 3 43 0;

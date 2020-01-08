@@ -1,0 +1,45 @@
+#N canvas 510 23 859 807 10;
+#X floatatom 279 111 5 0 0 0 - - -;
+#X text 283 127 Delay time (ms);
+#X msg 93 272 \$1 20;
+#X obj 93 296 vline~;
+#X obj 38 331 *~;
+#X floatatom 93 247 5 0 0 0 - - -;
+#X obj 93 191 loadbang;
+#X msg 93 218 1;
+#X obj 279 48 loadbang;
+#X msg 279 74 500;
+#X obj 38 135 _delay;
+#X obj 101 44 receive~ input_signal;
+#X obj 38 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 38 44 inlet;
+#X obj 38 401 throw~ ch1;
+#X obj 158 401 throw~ ch2;
+#X obj 723 42 hsl 128 15 0.1 10 1 0 empty empty empty -2 -8 0 10 -228856
+-1 -1 0 1;
+#X text 718 21 exponential factor;
+#X obj 720 68 nbx 8 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-228856 -1 -1 0 256;
+#X text 397 56 The value from the sensor;
+#X text 426 103 the mapping function;
+#X obj 561 58 r _a1;
+#X obj 561 101 cyclone/scale 0 1 0 4 1;
+#X connect 0 0 10 2;
+#X connect 2 0 3 0;
+#X connect 3 0 4 1;
+#X connect 4 0 14 0;
+#X connect 4 0 15 0;
+#X connect 5 0 2 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 9 0;
+#X connect 9 0 0 0;
+#X connect 10 0 4 0;
+#X connect 11 0 10 1;
+#X connect 12 0 10 0;
+#X connect 13 0 12 0;
+#X connect 16 0 18 0;
+#X connect 18 0 22 5;
+#X connect 21 0 22 0;
+#X connect 22 0 5 0;

@@ -1,0 +1,128 @@
+#N canvas 251 68 1529 842 10;
+#X msg 24 398 close;
+#X obj 7 14 cnv 15 440 60 empty empty empty 20 12 0 14 -200075 -66577
+0;
+#X msg 13 371 devices;
+#X msg 73 398 open \$1;
+#X text 15 22 [serial_print]: abstraction that works with Arduinos'
+Serial.print() and Serial.println() functions (with the use of [comport])
+;
+#X text 510 83 Inlets:;
+#X text 550 100 1st: bytes from [comport];
+#X text 510 166 Outlets:;
+#X obj 13 615 s;
+#X text 511 26 Arguments: delimiter type (tab \, space \, comma \,
+any). You can provide up to two arguments (cause three arguments is
+the same as "any"). if no argument is provided \, then all three symbols
+will work as delimiters;
+#X text 550 115 2nd: change delimiter type with a symbol (as with the
+arguments \, you can use two delimiters separated by a space \, e.g.
+"tab comma");
+#X text 10 78 [serial_print] is a vanilla abstraction that works with
+[comport] and Arduino's Serial.print() and Serial.println() functions.
+;
+#X text 10 237 This help patch works with the serial_print.ino sketch.
+Check it for more information.;
+#X text 554 184 1st: list of values of a group.;
+#X text 553 205 2nd: string to be used as a tag for a value group (print
+this first from the Arduino so that it works \, otherwise you'll probably
+get strange results). This comes out first \, then the value list out
+the left outlet;
+#X text 10 121 You can use commas \, spaces or tabs in between values
+to separate them. You can choose your delimiter via an argument (tab
+\, space \, comma or any \, or no argument which is the same as any).
+A string must precede a value group \, which will be used as a tag
+\, sent to the right inlet of [send] \, and used as an argument to
+the corresponding [receive]. The last value of each group must be printed
+with Serial.println() \, in order for [serial_print] to know a value
+group has ended.;
+#X obj 13 593 serial_print any;
+#X text 11 278 Note: the digital pins are using the internal pull-up
+resistors \, using INPUT_PULLUP \, so you don't need to use resistors
+for switches. For this reason the readings of the digital pins are
+inverted so you get a 0 when you press a switch and a 1 when you release
+it.;
+#X obj 963 4 cnv 15 500 370 empty empty empty 20 12 0 14 -262130 -66577
+0;
+#X obj 1016 88 unpack s f;
+#X floatatom 1073 151 8 0 0 0 - - -;
+#X obj 1114 182 s _a0;
+#X text 1027 19 Data from analog sensors;
+#X obj 672 429 cnv 15 250 370 empty empty empty 20 12 0 14 -228856
+-66577 0;
+#X floatatom 689 578 5 0 0 0 - - -;
+#X obj 689 601 s resolution;
+#X msg 688 518 4095;
+#X msg 714 546 1023;
+#X obj 688 485 loadbang;
+#X text 753 545 10-bit Arduino resolution;
+#X text 752 520 12-bit Teensy resolution;
+#X text 688 450 Configuration;
+#X msg 297 420 devicename /dev/ttyACM0;
+#X obj 297 390 loadbang;
+#X text 210 361 Note: for the Pi the port is different than the laptop
+;
+#X msg 176 362 0;
+#X obj 13 569 comport 0 115200;
+#X obj 133 502 r to_microcontroller;
+#X obj 961 403 cnv 15 580 370 empty empty empty 20 12 0 14 -204786
+-66577 0;
+#X obj 983 716 _format_serial_messages;
+#X text 1169 732 The Arduino sketch handles messages for the LED with
+numbers between 0 and 255: those correspond to the LED intensity;
+#X text 1176 695 The Arduino sketch handles messages for the motors
+that are either 0 or 1: these correspond to the motor off and on;
+#X text 988 421 These messages control the microcontroller \; they
+are sent from the connected laptop \, received in form of OSC messages
+and then routed here.;
+#X floatatom 1009 523 5 0 0 0 - - -;
+#X obj 983 744 s to_microcontroller;
+#X floatatom 1211 513 5 0 0 0 - - -;
+#X floatatom 1202 609 5 0 0 0 - - -;
+#X floatatom 1011 608 5 0 0 0 - - -;
+#X obj 1009 500 r motor_up_pattern;
+#X msg 1009 544 motor_up_pattern \$1;
+#X obj 1011 585 r motor_down_pattern;
+#X msg 1011 629 motor_down_pattern \$1;
+#X obj 1211 490 r motor_left_pattern;
+#X msg 1211 534 motor_left_pattern \$1;
+#X obj 1202 586 r motor_right_pattern;
+#X msg 1202 630 motor_right_pattern \$1;
+#X msg 176 387 6;
+#X obj 1016 60 r a0;
+#X obj 1134 71 r resolution;
+#X obj 1073 123 cyclone/scale 0 4095 0 1 1;
+#X floatatom 1134 97 5 0 0 0 - - -;
+#X connect 0 0 36 0;
+#X connect 2 0 36 0;
+#X connect 3 0 36 0;
+#X connect 16 0 8 0;
+#X connect 16 1 8 1;
+#X connect 19 1 59 0;
+#X connect 20 0 21 0;
+#X connect 24 0 25 0;
+#X connect 26 0 24 0;
+#X connect 27 0 24 0;
+#X connect 28 0 26 0;
+#X connect 33 0 32 0;
+#X connect 35 0 3 0;
+#X connect 36 0 16 0;
+#X connect 37 0 36 0;
+#X connect 39 0 44 0;
+#X connect 43 0 49 0;
+#X connect 45 0 53 0;
+#X connect 46 0 55 0;
+#X connect 47 0 51 0;
+#X connect 48 0 43 0;
+#X connect 49 0 39 0;
+#X connect 50 0 47 0;
+#X connect 51 0 39 0;
+#X connect 52 0 45 0;
+#X connect 53 0 39 0;
+#X connect 54 0 46 0;
+#X connect 55 0 39 0;
+#X connect 56 0 3 0;
+#X connect 57 0 19 0;
+#X connect 58 0 60 0;
+#X connect 59 0 20 0;
+#X connect 60 0 59 2;
