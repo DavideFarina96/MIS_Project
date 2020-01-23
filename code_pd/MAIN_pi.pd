@@ -1,4 +1,4 @@
-#N canvas 629 166 805 604 10;
+#N canvas -11 -11 1920 1016 10;
 #X obj 18 16 loadbang;
 #X obj 18 43 delay 1000;
 #X msg 18 146 \; pd dsp \$1;
@@ -15,9 +15,14 @@
 #X obj 146 462 pack 0 500;
 #X obj 146 433 r global_volume_fade;
 #X obj 66 528 *~;
-#X obj 451 98 _osc_control;
+#X obj 451 56 _osc_control;
 #X obj 451 166 _abl_link_control;
-#X obj 451 52 _exchange_data_with_microcontroller;
+#X obj 451 98 _exchange_data_with_microcontroller;
+#X obj 451 243 s stopall;
+#X obj 451 214 bng 20 250 50 0 empty empty empty 17 7 0 10 -204786
+-1 -1;
+#X text 546 220 Send a message to set north \, south \, east \, and
+west to 0;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 3 0 2 0;
@@ -30,3 +35,4 @@
 #X connect 12 0 11 0;
 #X connect 13 0 12 0;
 #X connect 14 0 10 1;
+#X connect 19 0 18 0;

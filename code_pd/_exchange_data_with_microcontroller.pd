@@ -1,9 +1,9 @@
-#N canvas 251 68 1529 842 10;
-#X msg 24 398 close;
+#N canvas 950 0 958 1004 10;
+#X msg 24 403 close;
 #X obj 7 14 cnv 15 440 60 empty empty empty 20 12 0 14 -200075 -66577
 0;
 #X msg 13 371 devices;
-#X msg 73 398 open \$1;
+#X msg 73 403 open \$1;
 #X text 15 22 [serial_print]: abstraction that works with Arduinos'
 Serial.print() and Serial.println() functions (with the use of [comport])
 ;
@@ -42,63 +42,75 @@ resistors \, using INPUT_PULLUP \, so you don't need to use resistors
 for switches. For this reason the readings of the digital pins are
 inverted so you get a 0 when you press a switch and a 1 when you release
 it.;
-#X obj 963 4 cnv 15 500 370 empty empty empty 20 12 0 14 -262130 -66577
+#X obj 960 21 cnv 15 320 250 empty empty empty 20 12 0 14 -262130 -66577
 0;
-#X obj 1016 88 unpack s f;
-#X floatatom 1073 151 8 0 0 0 - - -;
-#X obj 1114 182 s _a0;
-#X text 1027 19 Data from analog sensors;
-#X obj 672 429 cnv 15 250 370 empty empty empty 20 12 0 14 -228856
+#X obj 1013 105 unpack s f;
+#X floatatom 1070 168 8 0 0 0 - - -;
+#X obj 1070 199 s _a0;
+#X text 990 36 Data from analog sensors;
+#X obj 672 343 cnv 15 250 220 empty empty empty 20 12 0 14 -228856
 -66577 0;
-#X floatatom 689 578 5 0 0 0 - - -;
-#X obj 689 601 s resolution;
-#X msg 688 518 4095;
-#X msg 714 546 1023;
-#X obj 688 485 loadbang;
-#X text 753 545 10-bit Arduino resolution;
-#X text 752 520 12-bit Teensy resolution;
-#X text 688 450 Configuration;
+#X floatatom 689 492 5 0 0 0 - - -;
+#X obj 689 515 s resolution;
+#X msg 689 432 4095;
+#X msg 714 460 1023;
+#X obj 689 399 loadbang;
+#X text 753 459 10-bit Arduino resolution;
+#X text 752 434 12-bit Teensy resolution;
+#X text 688 364 Configuration;
 #X msg 297 420 devicename /dev/ttyACM0;
 #X obj 297 390 loadbang;
 #X text 210 361 Note: for the Pi the port is different than the laptop
 ;
-#X msg 176 362 0;
+#X msg 176 350 0;
 #X obj 13 569 comport 0 115200;
 #X obj 133 502 r to_microcontroller;
-#X obj 961 403 cnv 15 580 370 empty empty empty 20 12 0 14 -204786
+#X obj 961 317 cnv 15 700 500 empty empty empty 20 12 0 14 -204786
 -66577 0;
-#X obj 983 716 _format_serial_messages;
-#X text 1169 732 The Arduino sketch handles messages for the LED with
-numbers between 0 and 255: those correspond to the LED intensity;
-#X text 1176 695 The Arduino sketch handles messages for the motors
-that are either 0 or 1: these correspond to the motor off and on;
-#X text 988 421 These messages control the microcontroller \; they
+#X obj 1001 751 _format_serial_messages;
+#X text 1238 336 These messages control the microcontroller \; they
 are sent from the connected laptop \, received in form of OSC messages
 and then routed here.;
-#X floatatom 1009 523 5 0 0 0 - - -;
-#X obj 983 744 s to_microcontroller;
-#X floatatom 1211 513 5 0 0 0 - - -;
-#X floatatom 1202 609 5 0 0 0 - - -;
-#X floatatom 1011 608 5 0 0 0 - - -;
-#X obj 1009 500 r motor_up_pattern;
-#X msg 1009 544 motor_up_pattern \$1;
-#X obj 1011 585 r motor_down_pattern;
-#X msg 1011 629 motor_down_pattern \$1;
-#X obj 1211 490 r motor_left_pattern;
-#X msg 1211 534 motor_left_pattern \$1;
-#X obj 1202 586 r motor_right_pattern;
-#X msg 1202 630 motor_right_pattern \$1;
-#X msg 176 387 6;
-#X obj 1016 60 r a0;
-#X obj 1134 71 r resolution;
-#X obj 1073 123 cyclone/scale 0 4095 0 1 1;
-#X floatatom 1134 97 5 0 0 0 - - -;
+#X floatatom 1154 647 5 0 0 0 - - -;
+#X obj 1001 779 s to_microcontroller;
+#X floatatom 1296 647 5 0 0 0 - - -;
+#X floatatom 1450 647 5 0 0 0 - - -;
+#X floatatom 1001 647 5 0 0 0 - - -;
+#X msg 1154 668 motor_up_pattern \$1;
+#X msg 1001 668 motor_down_pattern \$1;
+#X msg 1296 668 motor_left_pattern \$1;
+#X msg 1450 668 motor_right_pattern \$1;
+#X msg 176 375 6;
+#X obj 1013 77 r a0;
+#X obj 1131 88 r resolution;
+#X obj 1070 140 cyclone/scale 0 4095 0 1 1;
+#X floatatom 1131 114 5 0 0 0 - - -;
+#X obj 1184 594 r south;
+#X obj 1332 594 r east;
+#X obj 1486 594 r west;
+#X obj 1031 594 r north;
+#X obj 1001 341 r feedback;
+#X obj 1001 443 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1001 621 cyclone/gate;
+#X obj 1154 621 cyclone/gate;
+#X obj 1296 621 cyclone/gate;
+#X obj 1450 621 cyclone/gate;
+#X text 1187 767 The Arduino sketch handles messages for the motors
+with numbers between 0 and 500 that correspond to the vibration intensity
+;
+#X obj 1001 366 == 2;
+#X obj 1039 366 == 3;
+#X obj 1001 417 ||;
+#X floatatom 1025 442 5 0 0 0 - - -;
+#X obj 1039 392 t b f;
+#X obj 1001 392 f;
 #X connect 0 0 36 0;
 #X connect 2 0 36 0;
 #X connect 3 0 36 0;
 #X connect 16 0 8 0;
 #X connect 16 1 8 1;
-#X connect 19 1 59 0;
+#X connect 19 1 53 0;
 #X connect 20 0 21 0;
 #X connect 24 0 25 0;
 #X connect 26 0 24 0;
@@ -108,21 +120,38 @@ and then routed here.;
 #X connect 35 0 3 0;
 #X connect 36 0 16 0;
 #X connect 37 0 36 0;
-#X connect 39 0 44 0;
-#X connect 43 0 49 0;
-#X connect 45 0 53 0;
-#X connect 46 0 55 0;
-#X connect 47 0 51 0;
-#X connect 48 0 43 0;
+#X connect 39 0 42 0;
+#X connect 41 0 46 0;
+#X connect 43 0 48 0;
+#X connect 44 0 49 0;
+#X connect 45 0 47 0;
+#X connect 46 0 39 0;
+#X connect 47 0 39 0;
+#X connect 48 0 39 0;
 #X connect 49 0 39 0;
-#X connect 50 0 47 0;
-#X connect 51 0 39 0;
-#X connect 52 0 45 0;
-#X connect 53 0 39 0;
-#X connect 54 0 46 0;
-#X connect 55 0 39 0;
-#X connect 56 0 3 0;
-#X connect 57 0 19 0;
-#X connect 58 0 60 0;
-#X connect 59 0 20 0;
-#X connect 60 0 59 2;
+#X connect 50 0 3 0;
+#X connect 51 0 19 0;
+#X connect 52 0 54 0;
+#X connect 53 0 20 0;
+#X connect 54 0 53 2;
+#X connect 55 0 62 1;
+#X connect 56 0 63 1;
+#X connect 57 0 64 1;
+#X connect 58 0 61 1;
+#X connect 59 0 66 0;
+#X connect 59 0 67 0;
+#X connect 60 0 61 0;
+#X connect 60 0 62 0;
+#X connect 60 0 63 0;
+#X connect 60 0 64 0;
+#X connect 61 0 45 0;
+#X connect 62 0 41 0;
+#X connect 63 0 43 0;
+#X connect 64 0 44 0;
+#X connect 66 0 71 0;
+#X connect 67 0 70 0;
+#X connect 68 0 60 0;
+#X connect 68 0 69 0;
+#X connect 70 0 71 0;
+#X connect 70 1 68 1;
+#X connect 71 0 68 0;
