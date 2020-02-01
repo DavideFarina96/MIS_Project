@@ -40,13 +40,12 @@ public class deltaCalculator : MonoBehaviour
         // Compute the cartesian distance, not considering depth
         int distance = (int)Mathf.Sqrt(Mathf.Pow(distanceNS, 2) + Mathf.Pow(distanceWE, 2));
 
-        if (distance < 10 && manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING)
+        if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING && distance < 10)
         {
             manager.GetComponent<ExperimentManager>().currentPhase = enums.ExperimentPhases.TIMER;
             StartCoroutine(GetComponent<FollowPath>().StartExperiment());
         }
-
-        if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.RUNNING)
+        else if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.RUNNING)
         {
             OSC_N = distanceNS < 0 ? -distanceNS : 0; //north
             OSC_E = distanceWE > 0 ? distanceWE : 0; //east

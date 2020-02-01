@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 290139507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 1507982772}
   m_RootOrder: 0
@@ -252,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 650f66d6f481bf64e98c36d64573bbc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,7 +292,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.005
+  m_Radius: 0.01
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &363427295 stripped
 Transform:
@@ -653,7 +653,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
+      objectReference: {fileID: 2100000, guid: d408ae45467a52f479fc3a0dd20a8fab, type: 2}
     - target: {fileID: -927199367670048503, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_Name
@@ -886,7 +886,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
+      objectReference: {fileID: 2100000, guid: d408ae45467a52f479fc3a0dd20a8fab, type: 2}
     - target: {fileID: -927199367670048503, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_Name
@@ -922,8 +922,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.3, z: 0.17}
-  m_Center: {x: 0.08, y: -0.059140667, z: 0.0572387}
+  m_Size: {x: 0.02, y: 0.3, z: 0.17}
+  m_Center: {x: 0, y: -0.059140667, z: 0.0572387}
 --- !u!114 &959515343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,7 +2156,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.01
+    widthMultiplier: 0.015
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2472,8 +2472,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.45, z: 0.23}
-  m_Center: {x: 0.08, y: 0.002229922, z: 0.08187696}
+  m_Size: {x: 0.005000002, y: 0.45, z: 0.23}
+  m_Center: {x: -0.0004572207, y: 0.002229922, z: 0.08187696}
 --- !u!114 &1734731615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2706,7 +2706,7 @@ SphereCollider:
   m_GameObject: {fileID: 1943889482}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -2717,7 +2717,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943889482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2914,7 +2914,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bd0bb729cb6159b4ab21c5f62cad24ee, type: 3}
+      objectReference: {fileID: 2100000, guid: d408ae45467a52f479fc3a0dd20a8fab, type: 2}
     - target: {fileID: -927199367670048503, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_Name
@@ -2950,8 +2950,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.3, z: 0.2}
-  m_Center: {x: 0.08, y: -0.0005807878, z: 0.07791512}
+  m_Size: {x: 0.02, y: 0.3, z: 0.2}
+  m_Center: {x: 0, y: -0.0005807878, z: 0.07791512}
 --- !u!114 &2015212004
 MonoBehaviour:
   m_ObjectHideFlags: 0

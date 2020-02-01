@@ -27,7 +27,7 @@ public class ExperimentManager : MonoBehaviour
     {
         textFieldComp = textField.GetComponent<TMP_Text>();
         GenerateExperimentsList();
-
+        
         isStarted = true;
     }
 
@@ -41,13 +41,14 @@ public class ExperimentManager : MonoBehaviour
             {
                 case enums.ExperimentPhases.PREPARING:
                     //Debug.Log("Now running experiment number " + currentExperimentNumber);
-                    // Send experiment information to the OSC controller 
-                    OSC_experiment_message = experiments[currentExperimentNumber].ToString();
+                    // Send feed back type to the OSC controller 
                     currentFeedbackType = (int)experiments[currentExperimentNumber].feedback;
                     // Actually start the experiment
                     experiments[currentExperimentNumber].path.SetActive(true);
                     textFieldComp.text = "Move your cursor near the blue ball to begin."; break;
                 case enums.ExperimentPhases.RUNNING:
+                    // Send experiment information to the OSC controller
+                    OSC_experiment_message = experiments[currentExperimentNumber].ToString();
                     textFieldComp.text = "Follow the blue ball"; break;
                 case enums.ExperimentPhases.FINISHED:
                     // Hide the path from the scene
@@ -67,28 +68,22 @@ public class ExperimentManager : MonoBehaviour
     void GenerateExperimentsList()
     {
         //Generate the sequence of experiments
-        Experiment[] tempExperiments = new Experiment[paths.Length * FeedbackTypesLength];
+        experiments = new Experiment[paths.Length * FeedbackTypesLength * repetitionsPerPath];
 
         for (int i = 0; i < paths.Length; i++)
         {
             for (int j = 0; j < FeedbackTypesLength; j++)
             {
-                int index = i * FeedbackTypesLength + j;
-                tempExperiments[index] = new Experiment(paths[i], (enums.FeedbackTypes)j, 0);
+                for (int k = 0; k < repetitionsPerPath; k++)
+                {
+                    int index = (i * FeedbackTypesLength + j) * repetitionsPerPath + k;
+                    experiments[index] = new Experiment(paths[i], (enums.FeedbackTypes)j, k + 1);
+                }
             }
         }
 
         // Shuffle the experiments around
-        Shuffle(tempExperiments);
-        experiments = new Experiment[tempExperiments.Length * repetitionsPerPath];
-        for (int i = 0; i < tempExperiments.Length; i++)
-        {
-            for (int j = 0; j < repetitionsPerPath; j++)
-            {
-                int index = i * repetitionsPerPath + j;
-                experiments[index] = new Experiment(tempExperiments[i].path, tempExperiments[i].feedback, j + 1);
-            }
-        }
+        Shuffle(experiments);
     }
 
     void Shuffle(Experiment[] experiments)
