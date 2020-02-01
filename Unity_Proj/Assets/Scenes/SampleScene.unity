@@ -505,7 +505,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.444
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -525,12 +525,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -540,7 +540,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -733,12 +733,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.444
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -753,12 +753,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -768,7 +768,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -820,8 +820,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 0.20937105, z: 0.10409259}
-  m_Center: {x: 0, y: -0.05914064, z: 0.057238676}
+  m_Size: {x: 0.1, y: 0.3, z: 0.15}
+  m_Center: {x: 0, y: -0.059140667, z: 0.0572387}
 --- !u!114 &959515343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,6 +836,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marker: {fileID: 1046640528}
   hitPoint: {fileID: 1943889482}
+  OSC_N: 0
+  OSC_S: 0
+  OSC_E: 0
+  OSC_W: 0
   manager: {fileID: 1733664060}
   pressureReceived: 0
 --- !u!114 &959515344
@@ -872,15 +876,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 959515340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfb44b8581f946d39ba8b5cc7af0310, type: 3}
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transmitter: {fileID: 1733664064}
-  address: /nesw
+  address: /w
   mapBundle: {fileID: 0}
   reflectionMember:
     Target: {fileID: 959515343}
-    MemberName: osc_NESW
+    MemberName: OSC_W
   informOnChanged: 1
   informInterval: 0
 --- !u!114 &959515346
@@ -899,8 +903,68 @@ MonoBehaviour:
   address: /pressure
   mapBundle: {fileID: 0}
   reflectionMembers:
-  - Target: {fileID: 2015212004}
+  - Target: {fileID: 959515343}
     MemberName: pressureReceived
+--- !u!114 &959515347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959515340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /s
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 959515343}
+    MemberName: OSC_S
+  informOnChanged: 1
+  informInterval: 0
+--- !u!114 &959515348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959515340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /e
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 959515343}
+    MemberName: OSC_E
+  informOnChanged: 1
+  informInterval: 0
+--- !u!114 &959515349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959515340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /n
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 959515343}
+    MemberName: OSC_N
+  informOnChanged: 1
+  informInterval: 0
 --- !u!1 &987746060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,15 +1926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.63
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.975
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1878,7 +1942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1886,7 +1950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_RootOrder
@@ -1898,7 +1962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2049,6 +2113,7 @@ GameObject:
   - component: {fileID: 1733664064}
   - component: {fileID: 1733664063}
   - component: {fileID: 1733664065}
+  - component: {fileID: 1733664066}
   m_Layer: 0
   m_Name: GeneralManager
   m_TagString: Untagged
@@ -2076,6 +2141,7 @@ MonoBehaviour:
   currentPhase: 0
   currentExperimentNumber: 0
   currentFeedbackType: 0
+  OSC_experiment_message: 
   textField: {fileID: 1437778058}
   textFieldComp: {fileID: 0}
 --- !u!4 &1733664062
@@ -2132,7 +2198,7 @@ MonoBehaviour:
   localReceiver: {fileID: 0}
   localHost: 192.168.1.108
   localPort: 7000
-  remoteHost: 127.0.0.1
+  remoteHost: 192.168.1.151
   remotePort: 2222
   useBundle: 0
 --- !u!114 &1733664065
@@ -2155,6 +2221,26 @@ MonoBehaviour:
     MemberName: currentFeedbackType
   informOnChanged: 1
   informInterval: 0
+--- !u!114 &1733664066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733664060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5d31582afe4b495f8a509ea615cfbaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /path_status
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 1733664061}
+    MemberName: OSC_experiment_message
+  informOnChanged: 1
+  informInterval: 0
 --- !u!1 &1734731613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 06fa98283522ec6489eed25ccff27287,
@@ -2172,8 +2258,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 0.37402797, z: 0.15503897}
-  m_Center: {x: 0, y: 0.002229921, z: 0.081876926}
+  m_Size: {x: 0.1, y: 0.45, z: 0.22}
+  m_Center: {x: -0.0004572207, y: 0.002229922, z: 0.08187696}
 --- !u!114 &1734731615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,15 +2269,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1734731613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfb44b8581f946d39ba8b5cc7af0310, type: 3}
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transmitter: {fileID: 1733664064}
-  address: /nesw
+  address: /w
   mapBundle: {fileID: 0}
   reflectionMember:
     Target: {fileID: 1734731619}
-    MemberName: osc_NESW
+    MemberName: OSC_W
   informOnChanged: 1
   informInterval: 0
 --- !u!114 &1734731616
@@ -2210,8 +2296,28 @@ MonoBehaviour:
   address: /pressure
   mapBundle: {fileID: 0}
   reflectionMembers:
-  - Target: {fileID: 2015212004}
+  - Target: {fileID: 1734731619}
     MemberName: pressureReceived
+--- !u!114 &1734731617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734731613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /s
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 1734731619}
+    MemberName: OSC_S
+  informOnChanged: 1
+  informInterval: 0
 --- !u!114 &1734731618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2252,8 +2358,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marker: {fileID: 1046640528}
   hitPoint: {fileID: 1943889482}
+  OSC_N: 0
+  OSC_S: 0
+  OSC_E: 0
+  OSC_W: 0
   manager: {fileID: 1733664060}
   pressureReceived: 0
+--- !u!114 &1734731620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734731613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /e
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 1734731619}
+    MemberName: OSC_E
+  informOnChanged: 1
+  informInterval: 0
+--- !u!114 &1734731621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734731613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /n
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 1734731619}
+    MemberName: OSC_N
+  informOnChanged: 1
+  informInterval: 0
 --- !u!1 &1847137573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,7 +2644,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.444
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -2514,12 +2664,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -2529,7 +2679,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 06fa98283522ec6489eed25ccff27287,
         type: 3}
@@ -2581,8 +2731,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 0.21221736, z: 0.14257514}
-  m_Center: {x: 0, y: -0.00058078754, z: 0.07791509}
+  m_Size: {x: 0.1, y: 0.25, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.077915095}
 --- !u!114 &2015212004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2597,6 +2747,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marker: {fileID: 1046640528}
   hitPoint: {fileID: 1943889482}
+  OSC_N: 0
+  OSC_S: 0
+  OSC_E: 0
+  OSC_W: 0
   manager: {fileID: 1733664060}
   pressureReceived: 0
 --- !u!114 &2015212005
@@ -2639,6 +2793,46 @@ MonoBehaviour:
   reflectionMembers:
   - Target: {fileID: 2015212004}
     MemberName: pressureReceived
+--- !u!114 &2015212007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015212001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /w
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 2015212004}
+    MemberName: OSC_W
+  informOnChanged: 1
+  informInterval: 0
+--- !u!114 &2015212008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015212001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /s
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 2015212004}
+    MemberName: OSC_S
+  informOnChanged: 1
+  informInterval: 0
 --- !u!114 &2015212009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2648,15 +2842,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 2015212001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfb44b8581f946d39ba8b5cc7af0310, type: 3}
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transmitter: {fileID: 1733664064}
-  address: /nesw
+  address: /e
   mapBundle: {fileID: 0}
   reflectionMember:
     Target: {fileID: 2015212004}
-    MemberName: osc_NESW
+    MemberName: OSC_E
+  informOnChanged: 1
+  informInterval: 0
+--- !u!114 &2015212010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015212001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7829d4dd69f24ac6a93c5a51b67e54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transmitter: {fileID: 1733664064}
+  address: /n
+  mapBundle: {fileID: 0}
+  reflectionMember:
+    Target: {fileID: 2015212004}
+    MemberName: OSC_N
   informOnChanged: 1
   informInterval: 0
 --- !u!1 &2066405915
@@ -2776,7 +2990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096692962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.03, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.05, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}

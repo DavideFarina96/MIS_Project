@@ -41,7 +41,7 @@ public class FollowPath : MonoBehaviour
                 if (nextWaypoint + 1 == waypoints.Length) //you are done
                 {
                     StartCoroutine(StopExperiment());
-                    return; 
+                    return;
                 }
                 nextWaypoint++;
                 startTime = Time.time;
@@ -76,7 +76,8 @@ public class FollowPath : MonoBehaviour
     {
         manager.GetComponent<ExperimentManager>().currentPhase = enums.ExperimentPhases.FINISHING;
         manager.GetComponent<ExperimentManager>().textFieldComp.text = "Prepare for the next run\nGo back to the beginning";
-        //TODO: Save the log
+        // Tell pd to stop be annoying
+        manager.GetComponent<ExperimentManager>().send_OSC_finished();
 
         yield return new WaitForSeconds(3);
         //rest script

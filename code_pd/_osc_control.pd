@@ -1,48 +1,36 @@
 #N canvas -11 -11 1920 1016 10;
-#X obj 7 3 cnv 15 700 700 empty empty empty 20 12 0 14 -262130 -66577
+#X obj 7 3 cnv 15 700 600 empty empty empty 20 12 0 14 -262130 -66577
 0;
-#X obj 19 553 mrpeach/packOSC;
+#X obj 19 445 mrpeach/packOSC;
 #X text 19 6 Transmitter;
-#X obj 19 672 netsend -u -b;
-#X obj 70 617 loadbang;
-#X obj 19 587 cyclone/prepend send;
+#X obj 19 564 netsend -u -b;
+#X obj 69 505 loadbang;
+#X obj 19 479 cyclone/prepend send;
 #X floatatom 19 235 5 0 0 0 - - -;
-#X text 252 635 Here set the address of the device receiving the messages
+#X text 252 527 Here set the address of the device receiving the messages
 \, and the port which the device is listening on;
-#X obj 723 3 cnv 15 750 700 empty empty empty 20 12 0 14 -204800 -66577
+#X obj 723 3 cnv 15 750 600 empty empty empty 20 12 0 14 -204800 -66577
 0;
 #X text 738 8 Receiver;
 #X obj 765 95 mrpeach/unpackOSC;
 #X text 932 64 Here set the port which the device is listening on for
 incoming OSC messages;
-#X obj 19 196 r _a0;
-#X msg 70 638 connect 192.168.0.100 3333;
+#X msg 70 530 connect 192.168.0.100 3333;
 #X obj 765 68 netreceive -u -b 2222;
-#X obj 1259 181 print warning_message_not_routed;
-#X obj 1149 362 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 1272 181 print warning_message_not_routed;
+#X obj 1159 362 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 1089 336 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 1085 374 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 1047 299 loadbang;
-#X msg 1047 335 0;
-#X obj 1183 361 cyclone/gate;
+#X obj 1043 337 loadbang;
+#X msg 1043 373 0;
+#X obj 1193 361 cyclone/gate;
 #X obj 765 171 s feedback;
-#X obj 1272 385 print feedback;
-#X obj 1691 353 s nesw;
+#X obj 1282 385 print feedback;
 #X msg 19 257 /pressure \$1;
 #X obj 860 522 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 860 556 print ---------;
-#X obj 1570 364 symbol2list _;
-#X obj 1568 308 list2symbol;
-#X symbolatom 1692 332 10 0 0 0 - - -;
-#X obj 1570 393 unpack f f f f;
-#X obj 1647 508 s motor_up_pattern;
-#X obj 1600 476 s motor_left_pattern;
-#X obj 1569 442 s motor_down_pattern;
-#X obj 1693 547 s motor_right_pattern;
-#X obj 765 135 mrpeach/routeOSC /feedback /north /south /east /west
-/enable_print, f 100;
 #X obj 864 293 s north;
 #X obj 864 341 s south;
 #X obj 864 387 s east;
@@ -51,91 +39,102 @@ incoming OSC messages;
 #X floatatom 827 320 5 0 0 0 - - -;
 #X floatatom 827 366 5 0 0 0 - - -;
 #X floatatom 828 413 5 0 0 0 - - -;
-#X obj 1272 361 r feedback;
-#X obj 1150 409 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 1282 361 r feedback;
+#X obj 1160 409 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 1184 408 cyclone/gate;
-#X obj 1150 456 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 1194 408 cyclone/gate;
+#X obj 1160 456 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 1184 455 cyclone/gate;
-#X obj 1150 503 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 1194 455 cyclone/gate;
+#X obj 1160 503 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 1184 502 cyclone/gate;
-#X obj 1150 550 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+#X obj 1194 502 cyclone/gate;
+#X obj 1160 550 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
 0 1;
-#X obj 1184 549 cyclone/gate;
-#X obj 1273 408 r north;
-#X obj 1273 432 print north;
-#X obj 1273 455 r south;
-#X obj 1273 479 print south;
-#X obj 1273 502 r east;
-#X obj 1273 526 print east;
-#X obj 1273 549 r west;
-#X obj 1273 573 print west;
-#X text 1564 280 Alternative way -> send nesw message as x_y_z_k;
+#X obj 1194 549 cyclone/gate;
+#X obj 1283 408 r north;
+#X obj 1283 432 print north;
+#X obj 1283 455 r south;
+#X obj 1283 479 print south;
+#X obj 1283 502 r east;
+#X obj 1283 526 print east;
+#X obj 1283 549 r west;
+#X obj 1283 573 print west;
 #X msg 728 173 1;
 #X msg 728 154 0;
 #X msg 728 192 2;
 #X msg 728 211 3;
-#X obj 728 244 r stopall;
 #X msg 728 273 0;
+#X obj 19 196 r pressure;
+#X obj 1159 241 s end_path;
+#X text 1157 264 Handle init / end of a path;
+#X obj 1246 241 s experiment_name;
+#X obj 1159 317 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 1193 316 cyclone/gate;
+#X obj 1159 184 symbol;
+#X obj 1282 340 print status;
+#X obj 765 135 mrpeach/routeOSC /feedback /n /s /e /w /path_status
+, f 100;
+#X text 133 507 Pressure is not sent to the oculus as its logged locally
+;
+#X obj 1159 212 select FINISHED;
+#X obj 728 244 r clearall;
 #X connect 1 0 5 0;
-#X connect 4 0 13 0;
 #X connect 5 0 3 0;
-#X connect 6 0 24 0;
-#X connect 10 0 35 0;
-#X connect 12 0 6 0;
-#X connect 13 0 3 0;
-#X connect 14 0 10 0;
-#X connect 16 0 20 0;
-#X connect 17 0 16 0;
-#X connect 17 0 45 0;
-#X connect 17 0 47 0;
-#X connect 17 0 49 0;
-#X connect 17 0 51 0;
-#X connect 18 0 19 0;
-#X connect 19 0 17 0;
-#X connect 20 0 22 0;
-#X connect 24 0 1 0;
-#X connect 25 0 26 0;
-#X connect 27 0 30 0;
-#X connect 28 0 27 0;
-#X connect 28 0 29 0;
-#X connect 28 0 23 0;
-#X connect 30 0 33 0;
-#X connect 30 1 32 0;
-#X connect 30 2 31 0;
-#X connect 30 3 34 0;
-#X connect 35 0 21 0;
-#X connect 35 1 36 0;
-#X connect 35 2 37 0;
-#X connect 35 3 38 0;
-#X connect 35 4 39 0;
-#X connect 35 5 17 0;
-#X connect 35 6 15 0;
-#X connect 40 0 36 0;
-#X connect 41 0 37 0;
-#X connect 42 0 38 0;
-#X connect 43 0 39 0;
-#X connect 44 0 20 1;
-#X connect 45 0 46 0;
-#X connect 46 0 54 0;
-#X connect 47 0 48 0;
-#X connect 48 0 56 0;
-#X connect 49 0 50 0;
-#X connect 50 0 58 0;
-#X connect 51 0 52 0;
-#X connect 52 0 60 0;
-#X connect 53 0 46 1;
-#X connect 55 0 48 1;
-#X connect 57 0 50 1;
-#X connect 59 0 52 1;
-#X connect 62 0 21 0;
-#X connect 63 0 21 0;
-#X connect 64 0 21 0;
-#X connect 65 0 21 0;
-#X connect 66 0 67 0;
-#X connect 67 0 40 0;
-#X connect 67 0 41 0;
-#X connect 67 0 42 0;
-#X connect 67 0 43 0;
+#X connect 6 0 22 0;
+#X connect 10 0 63 0;
+#X connect 12 0 3 0;
+#X connect 13 0 10 0;
+#X connect 15 0 19 0;
+#X connect 16 0 15 0;
+#X connect 16 0 34 0;
+#X connect 16 0 36 0;
+#X connect 16 0 38 0;
+#X connect 16 0 40 0;
+#X connect 16 0 59 0;
+#X connect 17 0 18 0;
+#X connect 18 0 16 0;
+#X connect 19 0 21 0;
+#X connect 22 0 1 0;
+#X connect 23 0 24 0;
+#X connect 29 0 25 0;
+#X connect 30 0 26 0;
+#X connect 31 0 27 0;
+#X connect 32 0 28 0;
+#X connect 33 0 19 1;
+#X connect 34 0 35 0;
+#X connect 35 0 43 0;
+#X connect 36 0 37 0;
+#X connect 37 0 45 0;
+#X connect 38 0 39 0;
+#X connect 39 0 47 0;
+#X connect 40 0 41 0;
+#X connect 41 0 49 0;
+#X connect 42 0 35 1;
+#X connect 44 0 37 1;
+#X connect 46 0 39 1;
+#X connect 48 0 41 1;
+#X connect 50 0 20 0;
+#X connect 51 0 20 0;
+#X connect 52 0 20 0;
+#X connect 53 0 20 0;
+#X connect 54 0 29 0;
+#X connect 54 0 30 0;
+#X connect 54 0 31 0;
+#X connect 54 0 32 0;
+#X connect 55 0 6 0;
+#X connect 59 0 60 0;
+#X connect 60 0 62 0;
+#X connect 61 0 65 0;
+#X connect 61 0 60 1;
+#X connect 63 0 20 0;
+#X connect 63 1 29 0;
+#X connect 63 2 30 0;
+#X connect 63 3 31 0;
+#X connect 63 4 32 0;
+#X connect 63 5 61 0;
+#X connect 63 6 14 0;
+#X connect 65 0 56 0;
+#X connect 65 1 58 0;
+#X connect 66 0 54 0;

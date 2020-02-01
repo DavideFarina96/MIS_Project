@@ -13,16 +13,7 @@ namespace extOSC.Components.Informers
 
         protected override void FillMessage(OSCMessage message, List<OSCValue> value)
         {
-            int[] nesw = new int[4];
-
-            for (int i = 0; i < value.Count; i++)
-            {
-                nesw[i] = value[i].IntValue;
-            }
-
-            message.AddValue(OSCValue.String(string.Join("_", nesw)));
-
-            //message.AddValue(OSCValue.Array(value.ToArray()));
+            message.AddValue(OSCValue.Array(value.ToArray()));
         }
 
         #endregion

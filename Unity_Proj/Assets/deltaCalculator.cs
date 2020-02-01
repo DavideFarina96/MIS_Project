@@ -9,8 +9,7 @@ public class deltaCalculator : MonoBehaviour
     public GameObject hitPoint;
     float scaleFactor = 100.0f;
 
-    private int[] NESW;
-    public List<OSCValue> osc_NESW;
+    public int OSC_N = 0, OSC_S = 0, OSC_E = 0, OSC_W = 0;
 
     public GameObject manager;
 
@@ -20,14 +19,12 @@ public class deltaCalculator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NESW = new int[4];
-        osc_NESW = new List<OSCValue>(4);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -38,25 +35,25 @@ public class deltaCalculator : MonoBehaviour
         if (distance < 10 && manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING)
         {
             manager.GetComponent<ExperimentManager>().currentPhase = enums.ExperimentPhases.TIMER;
-            StartCoroutine(GetComponent<FollowPath>().StartExperiment());            
+            StartCoroutine(GetComponent<FollowPath>().StartExperiment());
         }
-            
 
-        //Distances North-South and West-East
-        int distanceNS = (int)(scaleFactor * (marker.transform.position.y - collision.contacts[0].point.y));
-        int distanceWE = (int)(scaleFactor * (marker.transform.position.z - collision.contacts[0].point.z));
+        if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.RUNNING)
+        {
+            //Distances North-South and West-East
+            int distanceNS = (int)(scaleFactor * (marker.transform.position.y - collision.contacts[0].point.y));
+            int distanceWE = (int)(scaleFactor * (marker.transform.position.z - collision.contacts[0].point.z));
 
-        NESW[0] = distanceNS < 0 ? -distanceNS : 0; //north
-        NESW[1] = distanceWE >= 0 ? distanceWE : 0; //east
-        NESW[2] = distanceNS >= 0 ? distanceNS : 0; //south
-        NESW[3] = distanceWE < 0 ? -distanceWE : 0; //west
-
-        //Pack into an OSCArray
-        osc_NESW.Clear();
-        osc_NESW.Add(new OSCValue(OSCValueType.Int, NESW[0]));
-        osc_NESW.Add(new OSCValue(OSCValueType.Int, NESW[1]));
-        osc_NESW.Add(new OSCValue(OSCValueType.Int, NESW[2]));
-        osc_NESW.Add(new OSCValue(OSCValueType.Int, NESW[3]));
+            OSC_N = distanceNS < 0 ? -distanceNS : 0; //north
+            OSC_E = distanceWE > 0 ? distanceWE : 0; //east
+            OSC_S = distanceNS > 0 ? distanceNS : 0; //south
+            OSC_W = distanceWE < 0 ? -distanceWE : 0; //west
+        }
+        else
+        {
+            // Avoid feedback in PD
+            OSC_N = 0; OSC_S = 0; OSC_E = 0; OSC_W = 0;
+        }
 
         //Debug.Log(NESW[0] + ", " + NESW[1] + ", " + NESW[2] + ", " + NESW[3]);
         //Debug.Log("DistanceNS: " + distanceNS);

@@ -1,0 +1,7 @@
+X - remove red ball
+X - route nesw messages of 4 different paths
+- LOG -> save file to the device
+
+- set the right IPs in the OSC
+- (optional) pause after 12 experiments
+- test

@@ -18,6 +18,6 @@ public class Experiment
     override
     public string ToString()
     {
-        return path.name + ", " + feedback + ", " + repetitionNumber;
+        return path.name + "_" + feedback + "_" + repetitionNumber;
     }
 }

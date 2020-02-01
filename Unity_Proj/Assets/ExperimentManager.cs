@@ -13,7 +13,9 @@ public class ExperimentManager : MonoBehaviour
     public bool isStarted = false;
     public enums.ExperimentPhases currentPhase = enums.ExperimentPhases.PREPARING;
     public int currentExperimentNumber = 0;
-    public int currentFeedbackType = 0;
+    public int currentFeedbackType = -1;
+
+    public string OSC_experiment_message;
 
     public GameObject textField;
     public TMP_Text textFieldComp;
@@ -32,24 +34,34 @@ public class ExperimentManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isStarted)
+        if (isStarted)
         {
             //Debug.Log("Current Phase: " + currentPhase);
-            switch(currentPhase)
+            switch (currentPhase)
             {
                 case enums.ExperimentPhases.PREPARING:
                     //Debug.Log("Now running experiment number " + currentExperimentNumber);
-                    experiments[currentExperimentNumber].path.SetActive(true);
+                    // Send experiment information to the OSC controller 
+                    OSC_experiment_message = experiments[currentExperimentNumber].ToString();
                     currentFeedbackType = (int)experiments[currentExperimentNumber].feedback;
+                    // Actually start the experiment
+                    experiments[currentExperimentNumber].path.SetActive(true);
                     textFieldComp.text = "Move your cursor near the blue ball to begin."; break;
                 case enums.ExperimentPhases.RUNNING:
                     textFieldComp.text = "Follow the blue ball"; break;
                 case enums.ExperimentPhases.FINISHED:
+                    // Hide the path from the scene
                     experiments[currentExperimentNumber].path.SetActive(false);
                     currentExperimentNumber++;
                     currentPhase = enums.ExperimentPhases.PREPARING; break;
-            }            
+            }
         }
+    }
+
+    public void send_OSC_finished()
+    {
+        // Signal the OSC controller that the experiment has finished
+        OSC_experiment_message = "FINISHED";
     }
 
     void GenerateExperimentsList()
