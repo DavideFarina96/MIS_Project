@@ -29,10 +29,15 @@ public class deltaCalculator : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        hitPoint.transform.position = collision.contacts[0].point;
+        // Move the red hitpoint
+        hitPoint.transform.position.y = collision.contacts[0].point.y;
+        hitPoint.transform.position.z = collision.contacts[0].point.z;
+
+        // Compute the distance on the axis
         int distanceNS = (int)(scaleFactor * (marker.transform.position.y - collision.contacts[0].point.y));
         int distanceWE = (int)(scaleFactor * (marker.transform.position.z - collision.contacts[0].point.z));
 
+        // Compute the cartesian distance, not considering depth
         int distance = (int)Mathf.Sqrt(Mathf.Pow(distanceNS, 2) + Mathf.Pow(distanceWE, 2));
 
         if (distance < 10 && manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING)
