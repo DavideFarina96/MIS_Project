@@ -30,7 +30,10 @@ public class deltaCalculator : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         hitPoint.transform.position = collision.contacts[0].point;
-        int distance = (int)(scaleFactor * Vector3.Distance(marker.transform.position, collision.contacts[0].point));
+        int distanceNS = (int)(scaleFactor * (marker.transform.position.y - collision.contacts[0].point.y));
+        int distanceWE = (int)(scaleFactor * (marker.transform.position.z - collision.contacts[0].point.z));
+
+        int distance = (int)Mathf.Sqrt(Mathf.Pow(distanceNS, 2) + Mathf.Pow(distanceWE, 2));
 
         if (distance < 10 && manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING)
         {
@@ -40,10 +43,6 @@ public class deltaCalculator : MonoBehaviour
 
         if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.RUNNING)
         {
-            //Distances North-South and West-East
-            int distanceNS = (int)(scaleFactor * (marker.transform.position.y - collision.contacts[0].point.y));
-            int distanceWE = (int)(scaleFactor * (marker.transform.position.z - collision.contacts[0].point.z));
-
             OSC_N = distanceNS < 0 ? -distanceNS : 0; //north
             OSC_E = distanceWE > 0 ? distanceWE : 0; //east
             OSC_S = distanceNS > 0 ? distanceNS : 0; //south
