@@ -30,8 +30,8 @@ public class deltaCalculator : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         // Move the red hitpoint
-        hitPoint.transform.position.y = collision.contacts[0].point.y;
-        hitPoint.transform.position.z = collision.contacts[0].point.z;
+        hitPoint.transform.position = collision.contacts[0].point;
+
 
         // Compute the distance on the axis
         int distanceNS = (int)(scaleFactor * (marker.transform.position.y - collision.contacts[0].point.y));
