@@ -21,14 +21,18 @@ public class FollowPath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextWaypoint = 0;
-        marker.transform.position = waypoints[0].transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void OnEnable()
+    {
+        nextWaypoint = 0;
+        marker.transform.position = waypoints[0].transform.position;
     }
 
     private void FixedUpdate()
@@ -80,8 +84,8 @@ public class FollowPath : MonoBehaviour
         manager.GetComponent<ExperimentManager>().send_OSC_finished();
 
         yield return new WaitForSeconds(3);
-        //rest script
-        marker.transform.position = waypoints[0].transform.position;
+        //reset script
+        //marker.transform.position = waypoints[0].transform.position;
         nextWaypoint = 0;
         manager.GetComponent<ExperimentManager>().currentPhase = enums.ExperimentPhases.FINISHED;
 
