@@ -1,4 +1,4 @@
-#N canvas -8 -8 1920 1037 10;
+#N canvas 512 171 931 592 10;
 #X obj 18 16 loadbang;
 #X obj 18 43 delay 1000;
 #X msg 18 146 \; pd dsp \$1;
@@ -28,7 +28,7 @@ west to 0;
 #X obj 503 267 s scale_factor;
 #X msg 451 267 10;
 #X msg 450 289 0.5;
-#X obj 502 289 s exp_factor;
+#X obj 503 289 s exp_factor;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 3 0 2 0;

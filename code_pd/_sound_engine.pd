@@ -1,5 +1,5 @@
-#N canvas 868 15 958 1004 10;
-#X obj 411 271 _ADSR_generator;
+#N canvas 424 186 573 509 10;
+#X obj 16 223 _ADSR_generator;
 #X obj 16 26 r north;
 #X obj 69 26 r south;
 #X obj 122 26 r east;
@@ -14,14 +14,14 @@
 #X text 225 21 Cartesian distance NB: North-South and East-West values
 should not be set at the same time;
 #X obj 16 151 s error_distance;
-#X obj 466 421 vline~;
-#X obj 411 456 *~;
-#X floatatom 466 372 5 0 0 0 - - -;
-#X obj 466 316 loadbang;
-#X msg 466 343 1;
-#X obj 411 526 throw~ ch1;
-#X obj 531 526 throw~ ch2;
-#X msg 466 397 \$1 2000;
+#X obj 71 373 vline~;
+#X obj 16 408 *~;
+#X floatatom 71 324 5 0 0 0 - - -;
+#X obj 71 268 loadbang;
+#X msg 71 295 1;
+#X obj 16 478 throw~ ch1;
+#X obj 136 478 throw~ ch2;
+#X msg 71 349 \$1 2000;
 #X connect 0 0 14 0;
 #X connect 1 0 8 0;
 #X connect 2 0 7 0;
