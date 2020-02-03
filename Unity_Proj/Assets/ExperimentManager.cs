@@ -27,7 +27,7 @@ public class ExperimentManager : MonoBehaviour
     {
         textFieldComp = textField.GetComponent<TMP_Text>();
         GenerateExperimentsList();
-        
+
         isStarted = true;
     }
 
@@ -49,12 +49,20 @@ public class ExperimentManager : MonoBehaviour
                 case enums.ExperimentPhases.RUNNING:
                     // Send experiment information to the OSC controller
                     OSC_experiment_message = experiments[currentExperimentNumber].ToString();
-                    textFieldComp.text = "Follow the blue ball"; break;
+                    textFieldComp.text = "Follow the blue ball."; break;
                 case enums.ExperimentPhases.FINISHED:
                     // Hide the path from the scene
                     experiments[currentExperimentNumber].path.SetActive(false);
-                    currentExperimentNumber++;
-                    currentPhase = enums.ExperimentPhases.PREPARING; break;
+                    if (++currentExperimentNumber < experiments.Length)
+                    {
+                        currentPhase = enums.ExperimentPhases.PREPARING;
+                    }
+                    else
+                    {
+                        isStarted = false;
+                        textFieldComp.text = "Experiment over.\nThank you for partecipating.";
+                    }
+                    break;
             }
         }
     }

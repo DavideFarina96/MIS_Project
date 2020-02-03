@@ -7,7 +7,8 @@ public class deltaCalculator : MonoBehaviour
 {
     public GameObject marker;
     public GameObject hitPoint;
-    float scaleFactor = 100.0f;
+    float scaleFactor = 2550.0f;
+    int activation_distance = 255;
 
     public int OSC_N = 0, OSC_S = 0, OSC_E = 0, OSC_W = 0;
 
@@ -40,7 +41,7 @@ public class deltaCalculator : MonoBehaviour
         // Compute the cartesian distance, not considering depth
         int distance = (int)Mathf.Sqrt(Mathf.Pow(distanceNS, 2) + Mathf.Pow(distanceWE, 2));
 
-        if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING && distance < 10)
+        if (manager.GetComponent<ExperimentManager>().currentPhase == enums.ExperimentPhases.PREPARING && distance < activation_distance)
         {
             manager.GetComponent<ExperimentManager>().currentPhase = enums.ExperimentPhases.TIMER;
             StartCoroutine(GetComponent<FollowPath>().StartExperiment());

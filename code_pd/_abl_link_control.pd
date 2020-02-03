@@ -1,4 +1,4 @@
-#N canvas 638 278 410 459 10;
+#N canvas 638 278 423 476 10;
 #X msg 223 190 tempo \$1;
 #X msg 12 191 resolution \$1;
 #X msg 115 211 reset \$1 \$2;
@@ -19,9 +19,9 @@
 -1;
 #X obj 223 9 r error_distance;
 #X obj 223 124 clip 0 300;
-#X obj 289 34 r scale_factor;
-#X obj 319 60 r exp_factor;
-#X obj 223 89 cyclone/scale 0 10 0 300 0.5;
+#X obj 291 34 r scale_factor;
+#X obj 325 60 r exp_factor;
+#X obj 223 89 cyclone/scale 0 255 0 300 0.5;
 #X connect 0 0 8 0;
 #X connect 1 0 8 0;
 #X connect 2 0 8 0;
