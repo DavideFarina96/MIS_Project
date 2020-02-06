@@ -10,6 +10,8 @@ FEEDBACK_TYPES = ["NO_FEEDBACK", "AUDIO", "HAPTIC", "BOTH"]
 N_ATTEMPTS = 3
 logs_folder = "logs/"
 
+PLOT_SIZE = (13,7)
+
 # How many points to create in the quantization of the pressure log
 target_points = 1000
 
@@ -197,7 +199,7 @@ BOTH.append(sum(BOTH) / len(BOTH))
 x = np.arange(len(LABELS))  # the label locations
 width = 0.2  # the width of the bars
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=PLOT_SIZE)
 rects1 = ax.bar(x - width, AUDIO, width, label='AUDIO')
 rects2 = ax.bar(x, HAPTIC, width, label='HAPTIC')
 rects3 = ax.bar(x + width, BOTH, width, label='BOTH')
@@ -225,15 +227,15 @@ autolabel(rects1)
 autolabel(rects2)
 autolabel(rects3)
 fig.tight_layout()
-plt.show()
+# plt.show()
+plt.savefig("Error.svg", format="svg")
 
 
 # PRESSURE GRAPH ##############################################################
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=PLOT_SIZE)
 ax.set_title('Quantized value from the pressure sensor per user')
 ax.set_ylabel('Pressure sensor')
 ax.set_xlabel('Elapsed minutes')
-ax.legend()
 
 # Plot user specific data
 for user in range(1, N_USERS+1):
@@ -243,6 +245,7 @@ for user in range(1, N_USERS+1):
 plt.plot(user_data["pressure"][:, 0],
          user_data["pressure"][:, 1], label='AVG')
 
-fig.tight_layout()
 plt.legend()
-plt.show()
+fig.tight_layout()
+# plt.show()
+plt.savefig("Pressure.svg", format="svg")
